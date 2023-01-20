@@ -1,0 +1,23 @@
+import com.exalate.api.sync.SyncService
+import com.exalate.api.sync.SyncContext
+import com.exalate.api.sync.SyncNode
+
+def syncService = componentManager.getComponent(SyncService)
+def syncContext = new SyncContext()
+
+
+def epicKey = "lah-1"
+
+
+def epic = issueManager.getIssueObject(epicKey)
+
+
+def syncNode = new SyncNode(epic)
+
+
+syncNode.addAllFields()
+
+
+syncContext.addNode(syncNode)
+
+syncService.sync(syncContext)
